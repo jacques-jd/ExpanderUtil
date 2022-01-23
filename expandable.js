@@ -30,10 +30,12 @@ window.onload = event => {
     {
         //this line adds the indicators. Modify if you want it in a different format.
         xp.trigger.innerHTML = `${xp.trigger.innerHTML} ${unopened}`;
+        xp.trigger.style.cursor = "pointer";
 
         //this line hides them and makes them 0 height by default
         xp.target.style.opacity = "0";
         xp.target.style.height = "0";
+
 
         //this line adds the transition. comment out if you don't want transition.
         xp.target.style.transition = "opacity 0.2s, transform 0.2s";

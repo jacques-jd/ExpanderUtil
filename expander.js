@@ -9,14 +9,15 @@
 let expander = {
     target: 'expand',
     trigger: 'expandtrigger',
-    unopened: '⮞',
-    opened: '⮟',
+    opened: '\u25BE',
+    unopened: '\u25B8',
     hoverable: false
 };
 
-window.addEventListener("load", event =>
-{
-    let exps = []; //list of all expander with trigger, state, and target
+
+expander.init = event => {
+    //list of all expander with trigger, state, and target
+    let exps = []
 
     for (let i = 0; i < document.querySelectorAll(`.${expander.target}`).length; i++)
     {
@@ -30,7 +31,6 @@ window.addEventListener("load", event =>
 
     for (let xpd of exps)
     {
-        console.log(xpd);
         //this line adds the indicators. Modify if you want it in a different format.
         xpd.trigger.innerHTML = `${xpd.trigger.innerHTML} ${expander.unopened}`;
         xpd.trigger.style.cursor = "pointer";
@@ -90,4 +90,5 @@ window.addEventListener("load", event =>
             xpd.trigger.addEventListener("click", () => expander.toggle(xpd));
         }
     }
-});
+}
+window.addEventListener("load", expander.init);

@@ -37,7 +37,8 @@ expander.init = event => {
         xpd.trigger.innerHTML = `${xpd.trigger.innerHTML} ${expander.unopened}`;
         xpd.trigger.style.cursor = "pointer";
         xpd.target.style.zIndex = "2";
-        
+        xpd.target.style.transformOrigin = "50% 0%";
+
         expander.open = xp =>
         {
             xp.target.style.visibility = "visible";
@@ -52,9 +53,15 @@ expander.init = event => {
         expander.close = xp =>
         {
             
-            xp.target.style.visibility = "hidden";
             xp.target.style.transform = 'scaleY(0)';
-            xp.target.style.height = '0';
+
+            setTimeout(xp=>{
+                if(!xp.hover)
+                {
+                    xp.target.style.height = '0';
+                    xp.target.style.visibility = "hidden";
+                }
+            }, 200, xp);
 
             xp.trigger.innerHTML = xp.trigger.innerHTML.replace(expander.opened, expander.unopened);
 
@@ -76,7 +83,11 @@ expander.init = event => {
         }
 
         //this line hides them and makes them 0 height by default
-        expander.close(xpd);
+        if(xpd.target.classList.contains(expander.expanded)) {
+            expander.open(xpd);
+        } else {
+            expander.close(xpd);
+        }
 
         //this line adds the transition. comment out if you don't want transition.
         xpd.target.style.transition = "transform 0.2s";
@@ -91,10 +102,6 @@ expander.init = event => {
         else 
         {
             xpd.trigger.addEventListener("click", () => expander.toggle(xpd));
-        }
-
-        if(xpd.target.classList.contains(expander.expanded)) {
-            expander.open(xpd);
         }
     }
 }

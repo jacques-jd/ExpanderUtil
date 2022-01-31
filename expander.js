@@ -44,11 +44,8 @@ expander.init = event => {
             xp.target.style.display = "block";
             
             setTimeout(xp=>{
-                if(!xp.hover)
-                {
-                    xp.target.style.transform = 'scaleY(1)';
-                    xp.target.style.height = 'auto';
-                }
+                xp.target.style.transform = 'scaleY(1)';
+                xp.target.style.height = 'auto';
             }, 1, xp);
 
             xp.trigger.innerHTML = xp.trigger.innerHTML.replace(expander.unopened, expander.opened);

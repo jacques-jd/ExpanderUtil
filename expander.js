@@ -89,8 +89,10 @@ expander.init = event => {
             expander.close(xpd);
         }
 
-        //this line adds the transition. comment out if you don't want transition.
-        xpd.target.style.transition = "transform 0.2s";
+        //prevents it from flashing when loading screen
+        setTimeout(xpd => {
+            xpd.target.style.transition = "transform 0.2s";
+        }, 200, xpd);
 
         if (expander.hoverable) 
         {

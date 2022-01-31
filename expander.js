@@ -41,7 +41,7 @@ expander.init = event => {
 
         expander.open = xp =>
         {
-            xp.target.style.visibility = "visible";
+            xp.target.style.display = "block";
             xp.target.style.transform = 'scaleY(1)';
             xp.target.style.height = 'auto';
 
@@ -59,7 +59,7 @@ expander.init = event => {
                 if(!xp.hover)
                 {
                     xp.target.style.height = '0';
-                    xp.target.style.visibility = "hidden";
+                    xp.target.style.display = "none";
                 }
             }, 200, xp);
 

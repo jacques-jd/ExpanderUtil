@@ -1,6 +1,7 @@
 //SETTINGS
 // expander.target = The class name you will apply to the expander objects
 // expander.trigger = The class name you will apply to the item to click on, or the "Trigger" item.
+// expander.expanded = The class name for objects you want to be expanded by default (on page load)
 // expander.unopened = On your trigger, you should have an indication whether the expander is open or not. This is it when it is closed
 // expander.opened = This is the indication for when the expander is open.
 
@@ -9,6 +10,7 @@
 let expander = {
     target: 'expand',
     trigger: 'expandtrigger',
+    expanded: 'expanded',
     opened: '\u25BE',
     unopened: '\u25B8',
     hoverable: false
@@ -88,6 +90,10 @@ expander.init = event => {
         else 
         {
             xpd.trigger.addEventListener("click", () => expander.toggle(xpd));
+        }
+
+        if(xpd.target.classList.contains(expander.expanded)) {
+            expander.open(xpd);
         }
     }
 }

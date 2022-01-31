@@ -36,7 +36,8 @@ expander.init = event => {
         //this line adds the indicators. Modify if you want it in a different format.
         xpd.trigger.innerHTML = `${xpd.trigger.innerHTML} ${expander.unopened}`;
         xpd.trigger.style.cursor = "pointer";
-
+        xpd.target.style.zIndex = "2";
+        
         expander.open = xp =>
         {
             xp.target.style.visibility = "visible";
